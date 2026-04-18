@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chowdhury S. B. Prappya | Electrical Engineering Portfolio</title>
+    <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-main: #0f172a;       /* Deep slate background */
+            --bg-nav: #020617;        /* Darker slate for nav */
+            --bg-card: #1e293b;       /* Slate card background */
+            
+            --text-main: #f1f5f9;     /* Off-white text */
+            --text-muted: #94a3b8;    /* Muted slate text for paragraphs */
+            --text-highlight: #e2e8f0;/* Slightly brighter text for emphasis */
+            
+            --accent: #38bdf8;        /* Bright sky blue */
+            --accent-glow: rgba(56, 189, 248, 0.25); /* Subtle glow */
+            --accent-glow-strong: rgba(56, 189, 248, 0.5); /* Hover glow */
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: var(--bg-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(2, 6, 23, 0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        header {
+            /* ---> TO CHANGE DISTANCE BETWEEN TOP HERO AND FIRST SECTION: Adjust the 50px below <--- */
+            padding: 130px 5% 50px; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #1e293b 0%, var(--bg-main) 70%);
+        }
+
+        .profile-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--accent), #818cf8);
+            box-shadow: 0 0 30px var(--accent-glow-strong);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center; /* Ensures face/upper body stays visible */
+            border: 4px solid var(--bg-main);
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        header h2 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        /* Sleek Gradient Divider for the Hero Section */
+        .header-divider {
+            width: 250px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 0 auto 25px auto;
+            border: none;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+        }
+
+        .linkedin-link {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-nav);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--accent-glow-strong);
+        }
+
+        .linkedin-link:hover {
+            transform: translateY(-3px);
+            background-color: #7dd3fc;
+            box-shadow: 0 6px 20px var(--accent-glow-strong);
+        }
+
+        /* Section Formatting */
+        section {
+            /* ---> TO CHANGE DISTANCE BETWEEN ALL SECTIONS: Adjust the 30px below <--- */
+            padding: 30px 5%; 
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            /* ---> TO CHANGE DISTANCE BETWEEN SECTION TITLE AND THE CARDS: Adjust the 25px below <--- */
+            margin-bottom: 25px; 
+        }
+
+        h3.section-title {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .title-underline {
+            height: 4px;
+            width: 80px;
+            background: var(--accent);
+            margin: 0 auto 20px auto;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Edge-to-Edge glowing divider for sections */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+            margin: 30px 0 10px 0;
+            border: none;
+        }
+
+        .semi-bold {
+            font-weight: 600;
+            color: var(--text-highlight);
+        }
+
+        /* Grids and Uniform Premium Cards */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--accent-glow-strong);
+            background: linear-gradient(145deg, #253347 0%, #0f172a 100%);
+        }
+
+        /* Subtly animated top highlight bar for cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h4 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .card .meta {
+            color: var(--text-highlight);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .card ul {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .card li {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        .project-details p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent);
+        }
+
+        /* Thesis specific interior grid */
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .thesis-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Tags */
+        .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-nav);
+            text-align: center;
+            padding: 50px 5%;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            header h2 { font-size: 1.1rem; }
+            nav { display: none; }
+            .grid-2-col, .thesis-grid { grid-template-columns: 1fr; }
+            .card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-size: 1.2rem; font-weight: 800; letter-spacing: 2px;">C.S.B. PRAPPYA</div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#experience">At Bovara</a>
+            <a href="#internships">Other Internships</a>
+            <a href="#unsw-projects">UNSW Projects</a>
+            <a href="#thesis">Thesis</a>
+            <a href="#skills">Skills</a>
+        </div>
+    </nav>
+
+    <header id="about" class="animate-fade-in">
+        <div class="profile-container">
+            <img src="IMG_6046.jpg" alt="Chowdhury Swagato Badhan Prappya" class="profile-pic">
+        </div>
+        <h1>Chowdhury Swagato Badhan Prappya</h1>
+        <h2>Aspiring Electrical Engineer | Power Systems, Renewables, Design & Estimation</h2>
+        
+        <hr class="header-divider">
+
+        <p>Final-year Electrical Engineering (Honours) student at UNSW. Passionate about driving the transition to sustainable energy through robust expertise in high-voltage infrastructure, renewable systems, microgrids, and professional design/estimation.</p>
+        <a href="https://www.linkedin.com/in/chowdhury-swagato-badhan-prappya-6a64a2228" target="_blank" class="linkedin-link">Connect on LinkedIn</a>
+    </header>
+
+    <section id="experience">
+        <div class="section-header animate-fade-in">
+            <h3 class="section-title">At Bovara</h3>
+            <div class="title-underline"></div>
+            <div style="color: var(--accent); font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; letter-spacing: 1px;">Estimation & Design Intern | Jan 2026 - Apr 2026</div>
+            <p class="section-desc">During my tenure, I focused on technical accuracy and standard compliance for commercial low-voltage power distribution projects.</p>
+            <hr class="section-divider">
+        </div>
+
+        <div class="grid-2-col">
+            <div class="card animate-fade-in">
+                <h4>SLD Analysis & Technical Estimation</h4>
+                <div class="meta">Macros Excel Databases | Streamgineer Platform</div>
+                <ul>
+                    <li><span class="semi-bold">Consultancy SLD Interpretation:</span> Gained extensive experience in interpreting complex Single Line Diagrams (SLDs) supplied by engineering consultancies to extract technical requirements.</li>
+                    <li><span class="semi-bold">Estimation & Pricing:</span> Utilized macro-enabled Excel databases and the Streamgineer platform for precise estimation of Main Switchboards (MSBs), Distribution Boards (DBs), and Meter Panels (MPs).</li>
+                </ul>
+            </div>
+
+            <div class="card animate-fade-in">
+                <h4>Protection Device Selection & Cascading</h4>
+                <div class="meta">Breaker Technologies | ABB & Schneider</div>
+                <ul>
+                    <li><span class="semi-bold">Breaker Selection:</span> Appropriately selected the core breakers (MCBs, MCCBs, ACBs) required for specific power distribution configurations.</li>
+                    <li><span class="semi-bold">Cascading Analysis:</span> Referencing technical catalogs, verified that upstream breakers provided adequate backup protection to lower fault-rated downstream devices, ensuring complete discrimination.</li>
+                </ul>
+            </div>
+            
+            <div class="card animate-fade-in" style="grid-column: 1 / -1;">
+                <h4>Technical Drafting & CAD</h4>
+                <div class="meta">AutoCAD | Switchboard Layouts</div>
+                <ul>
+                    <li><span class="semi-bold">AutoCAD Drawings:</span> Generated detailed AutoCAD layout schematics for various switchboard types. Translated technical data into precise general arrangements and internal busbar layouts for manufacturing.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animate-fade-in" style="margin-top: 30px;">
+            <h4>Project Highlights & Client Engagements</h4>
+            <div class="meta">Key Developments & Documentation</div>
+            <div class="project-details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
+                <p><span class="semi-bold">Eden Residential:</span> MSB/DB estimation (Eden NSW)</p>
+                <p><span class="semi-bold">Surfers Paradise Residences:</span> All DB data (Surfers Paradise QLD)</p>
+                <p><span class="semi-bold">Yorktown Development:</span> Meter panels/DB pricing (Maroubra NSW)</p>
+                <p><span class="semi-bold">National Storage Hornsby:</span> Switchboard schematic & DB (Asquith NSW)</p>
+                <p><span class="semi-bold">DASLEC Industrial:</span> 1600A, IP66 Green MSB (Smithfield NSW)</p>
+                <p><span class="semi-bold">Railway Parade:</span> Kogarah residential MSB/meter panels (Kogarah NSW)</p>
+                <p><span class="semi-bold">Opal Jordan Springs:</span> HealthCare MSB and DB design (Jordan Springs NSW)</p>
+                <p><span class="semi-bold">Samaritan House:</span> Surry Hill DB & MSB Refurbishment (Surry Hills NSW)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="internships">
+        <div class="section-header animate-fade-in">
+            <h3 class="section-title">Other Internships</h3>
+            <div class="title-underline"></div>
+            <p class="section-desc">Deepening understanding of large-scale power generation, transmission, and industrial distribution through active internships at significant plant sites.</p>
+            <hr class="section-divider">
+        </div>
+
+        <div class="grid-2-col">
+            <div class="card animate-fade-in">
+                <h4>Regent Energy & Power Ltd.</h4>
+                <div class="meta">Power Systems Intern | Bangladesh | Dec 2024</div>
+                <p style="margin-bottom: 15px;">Gained critical plant-level exposure to large-scale high-voltage power generation and distribution.</p>
+                <ul>
+                    <li>Operated within a <span class="semi-bold">108 MW gas engine power plant</span>, gaining detailed understanding of operational control systems.</li>
+                    <li>Studied the configuration of <span class="semi-bold">11 kV circuit breakers</span> and the architecture of the <span class="semi-bold">132 kV transmission substation</span>.</li>
+                    <li>Participated in plant maintenance routines and observed synchronization processes.</li>
+                </ul>
+            </div>
+            
+            <div class="card animate-fade-in">
+                <h4>SM Knitwear Ltd.</h4>
+                <div class="meta">Power Systems Intern | Bangladesh | Jan 2025</div>
+                <p style="margin-bottom: 15px;">Explored the technical complexities of an industrial facility with its own localized power network.</p>
+                <ul>
+                    <li>Analyzed the <span class="semi-bold">power distribution and internal grid structure</span> powering a massive industrial complex.</li>
+                    <li>Studied the plant's <span class="semi-bold">Single Line Diagrams (SLDs)</span> to understand breaker placement and protection schemes.</li>
+                    <li>Gained experience in <span class="semi-bold">phase balancing and load distribution analysis</span> to ensure safe facility operation.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="unsw-projects">
+        <div class="section-header animate-fade-in">
+            <h3 class="section-title">UNSW Academic Design Projects</h3>
+            <div class="title-underline"></div>
+            <p class="section-desc">Demonstrating technical depth, hardware-software integration, and innovation through major engineering design challenges.</p>
+            <hr class="section-divider">
+        </div>
+
+        <div class="grid-2-col">
+            <div class="card animate-fade-in">
+                <h4>High-Efficiency PV Buck Converter</h4>
+                <div class="meta">ELEC4123 Design Proficiency</div>
+                <ul>
+                    <li><span class="semi-bold">Topology & Control:</span> Selected a Buck Converter to step down PV maximum power to a strictly regulated 10V DC output. Implemented a <span class="semi-bold">Perturb and Observe (P&O)</span> MPPT algorithm and a PI Controller for stable regulation.</li>
+                    <li><span class="semi-bold">Technical Solutions:</span> Overcame a high-side MOSFET driving constraint by designing a custom <span class="semi-bold">BJT-based gate driver circuit</span>, maintaining high efficiency and low ripple.</li>
+                    <li><span class="semi-bold">Analytical Depth:</span> Analyzed boundary conditions in high-irradiance/low-load simulations to provide insights into physical voltage limits.</li>
+                </ul>
+            </div>
+
+            <div class="card animate-fade-in">
+                <h4>Embedded Smart Bin System</h4>
+                <div class="meta">ELEC3117 Electrical Engineering Design</div>
+                <ul>
+                    <li><span class="semi-bold">Control Platform:</span> Utilized an <span class="semi-bold">Arduino-based microcontroller</span>. Integrated an HC-SR04 ultrasonic sensor for reliable user proximity detection and contactless lid operation via an SG90 servo motor.</li>
+                    <li><span class="semi-bold">Condition Detection:</span> Interfaced liquid detection sensors and an <span class="semi-bold">FSR-406 sensor</span> for solid leakage monitoring, providing comprehensive bin condition alerts.</li>
+                    <li><span class="semi-bold">Integration:</span> Troubleshot wiring and timing conflicts between sensing, servo actuation, and LED feedback by refining embedded control logic.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="thesis">
+        <div class="card animate-fade-in">
+            <div class="meta" style="margin-bottom: 5px;">Research Thesis | UNSW | Ongoing</div>
+            <h4 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 15px;">Medium-Frequency Isolated DC-DC-AC Converter for Renewable Energy Integration</h4>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 900px; margin-bottom: 30px;">
+                Investigating advanced <span class="semi-bold" style="color: white;">Solid-State Transformer (SST)</span> topologies for the efficient, compact integration of renewable energy sources and battery storage into localized DC microgrids and conventional AC grids.
+            </p>
+            
+            <div class="thesis-grid">
+                <div class="thesis-box">
+                    <h5 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 10px;">■ Modeling & Simulation</h5>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Developing comprehensive models in <span class="semi-bold">MATLAB/Simulink</span> encompassing PV arrays, battery storage, and multi-stage power electronic converters to analyze power flow, dynamic performance, and harmonic filtering.</p>
+                </div>
+                
+                <div class="thesis-box">
+                    <h5 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 10px;">■ Advanced Control Design</h5>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Designing dynamic control strategies for precise power management between the PV system, battery bank, and grid connections, including <span class="semi-bold">battery charge/discharge controllers</span> and high-performance DC/AC inverters.</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+                <span class="semi-bold" style="color: white;">Future Implementation Phase:</span> Progressing toward detailed hardware design of the medium-frequency transformer and implementation of physical AC and DC grid integration.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header animate-fade-in">
+            <h3 class="section-title">Technical Expertise</h3>
+            <div class="title-underline"></div>
+            <hr class="section-divider" style="margin-top: 20px;">
+        </div>
+        
+        <div class="card animate-fade-in" style="margin-bottom: 30px;">
+            <h4>Software & Engineering Tools</h4>
+            <div class="tech-tags">
+                <span class="tag">MATLAB & Simulink</span>
+                <span class="tag">PSCAD (AGSE Certified)</span>
+                <span class="tag">AutoCAD</span>
+                <span class="tag">LTspice</span>
+                <span class="tag">Streamgineer</span>
+                <span class="tag">Ostendo ERP</span>
+            </div>
+        </div>
+        
+        <div class="card animate-fade-in">
+            <h4>Relevant Coursework</h4>
+            <div class="tech-tags">
+                <span class="tag">Power System Equipment and High Voltage</span>
+                <span class="tag">Power System Protection</span>
+                <span class="tag">Power System Analysis</span>
+                <span class="tag">Electrical Engineering</span>
+                <span class="tag">Control Systems</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-size: 2rem; margin-bottom: 15px; font-weight: 800;">Let's build the future of energy, together.</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">Actively seeking graduate roles in Power Systems, Renewables, Design, Estimation, and Consulting.</p>
+        <p style="margin-top: 50px; font-size: 0.9rem; color: #475569;">&copy; 2026 Chowdhury Swagato Badhan Prappya. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
